@@ -1,0 +1,46 @@
+// John Myers
+// 6/19/2020
+// AppScript code for Google Sheets function
+//*****************************************
+//
+// This function computes the median value based on a frequency table.
+// This function takes two lists as arguments. The first list represents
+// the data and the second list represents the frequency of each data value.
+//
+//*****************************************
+function medianFreq(rangeData, rangeFreq) {
+  var total=0;
+  //find total of frequencies
+  for(var i=0;i<rangeFreq.length;i++){
+    total=total+parseInt(rangeFreq[i]);
+  }
+  //determine location of median
+  var even = (total % 2 == 0);
+  var odd = !even;
+  if (even){
+    var location=total/2;
+    //for even num of items the median is the average of location and location+1
+  } else {
+    var location = total/2 + 0.5;
+    //for odd the median is at location
+  }
+  //find median
+  //find where the accumulated frequencies add to the location
+  total=0;
+  for(var i=0;total<location;i++){
+    total=total+parseInt(rangeFreq[i]);  
+  }
+  var index = i-1; //have to take away the last time i was added to
+  if (odd) {
+    //return index;
+    return rangeData[index];
+  } else
+    if (total==location){
+      //return (parseInt(index)+parseInt(index+1))/2
+      var median=(parseInt(rangeData[index])+parseInt(rangeData[index+1]))/2;
+      return median;
+    } else {
+      //return index
+      return rangeData[index];
+    }      
+}
