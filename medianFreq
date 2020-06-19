@@ -7,6 +7,7 @@
 // This function takes two lists as arguments. The first list represents
 // the data and the second list represents the frequency of each data value.
 //
+// Pre-condition: rangeData is sorted. (ascending or descending)
 //*****************************************
 function medianFreq(rangeData, rangeFreq) {
   var total=0;
@@ -19,10 +20,10 @@ function medianFreq(rangeData, rangeFreq) {
   var odd = !even;
   if (even){
     var location=total/2;
-    //for even num of items the median is the average of location and location+1
+    //for even num of items the median will be the average of location and location+1
   } else {
     var location = total/2 + 0.5;
-    //for odd the median is at location
+    //for odd the median will be at location
   }
   //find median
   //find where the accumulated frequencies add to the location
